@@ -40,17 +40,3 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/test-workflowna:latest
-
-    - name: Deploy to server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SERVER_HOST: ${{ secrets.SERVER_HOST }}
-        DOCKER_IMAGE: ghcr.io/${{ github.repository_owner }}/test-workflowna:latest
-      run: |
-        echo "$SSH_PRIVATE_KEY" > /tmp/private_key
-        chmod 600 /tmp/private_key
-        scp -i /tmp/private_key docker-compose.yml user@${SERVER_HOST}:/path/to/compose.yml
-        ssh -i /tmp/private_key user@${SERVER_HOST} << EOF
-          docker-compose -f /path/to/compose.yml pull
-          docker-compose -f /path/to/compose.yml up -d
-EOF
