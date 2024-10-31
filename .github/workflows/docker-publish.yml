@@ -41,8 +41,8 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build . -t ghcr.io/Bqiwezz/test-workflowna:latest
+          docker build . -t ghcr.io/bqiwezz/test-workflowna:latest
 
       - name: Push the Docker image
         run: |
-          docker push ghcr.io/Bqiwezz/test-workflowna:latest
+          docker push ghcr.io/bqiwezz/test-workflowna:latest
