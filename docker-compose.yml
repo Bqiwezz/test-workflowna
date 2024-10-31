@@ -1,0 +1,6 @@
+version: "3"
+services:
+  vite-app:
+    image: ghcr.io/bqiwezz/test-workflowna:latest # Replace with your image path
+    ports:
+      - "80:80" # Expose the app on port 80
